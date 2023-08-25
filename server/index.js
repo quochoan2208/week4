@@ -1,9 +1,10 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
+const cors = require('cors'); 
 
 const bodyParser = require('body-parser');
-
+app.use(cors());
 app.use(express.static(__dirname + '/www'));
 app.use(bodyParser.json());
 
@@ -14,7 +15,7 @@ app.get('/', function (req, res) {
 const users = [
   { email: 'abc@gmail.com.au', birthday: '12/08/2000', age: 18, pwd: '123',valid: true  },
   { email: 'zyz@gmail.com.au', birthday: '11/05/2001', age: 28, pwd: '262',valid: false  },
-  { email: 'abc@gmail.com.au', birthday: '19/02/2003', age: 38, pwd: '356',valid: true  },
+  { email: 'axc@gmail.com.au', birthday: '19/02/2003', age: 38, pwd: '356',valid: true  },
 ];
 
 
@@ -57,8 +58,10 @@ app.post('/api/login', function (req, res) {
             delete userWithoutPwd.pwd;
             let userString = JSON.stringify(userWithoutPwd);
             console.log(userString);
+           
 
-            
+
+
             break;
         }
     }

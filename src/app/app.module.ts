@@ -6,14 +6,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { Routes, RouterModule } from '@angular/router';
+import { ProfileComponent } from './profile/profile.component';
+import { HttpClientModule } from '@angular/common/http';
 
-const routes: Routes = [{path: 'login',component: LoginComponent},{path: 'account',component: AccountComponent}]
+const routes: Routes = [{path: 'login',component: LoginComponent},{path: 'account',component: AccountComponent},{path: 'profile',component: ProfileComponent}]
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AccountComponent,
+    ProfileComponent,
 
     
   ],
@@ -21,7 +24,8 @@ const routes: Routes = [{path: 'login',component: LoginComponent},{path: 'accoun
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
