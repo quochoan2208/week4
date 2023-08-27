@@ -14,9 +14,9 @@ const routes: Routes = [{path: 'login',component: LoginComponent},{path: 'accoun
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+  
     AccountComponent,
-    ProfileComponent,
+    
 
     
   ],

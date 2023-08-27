@@ -1,33 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component ,inject,OnInit} from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { AuthService } from '../services/auth.service';
+import {User} from '../user';
 
 @Component({
   selector: 'app-profile',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
+export class ProfileComponent implements OnInit{
 
-export class ProfileComponent implements OnInit {
-  user: string | any;
-  constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-    const loginData = {
-      email: 'abc@gmail.com.au',
-      upwd: '123'
-    };
+  private authService = inject(AuthService);
+  selectedfile:any = null;
+  imagepath:String ="";
+  currentuser:User = new User();
 
-    this.login(loginData);
+  ngOnInit(){
+    this.currentuser = JSON.parse(this.authService.getCurrentuser() || '{}');
+    console.log(this.currentuser);
   }
 
-  login(loginData: any) {
-    this.http.post('/api/login', loginData).subscribe((response: any) => {
-      if (response.valid) {
-        this.user = response;
-        sessionStorage.setItem('currentUser', JSON.stringify(this.user)); 
-      } else {
-        console.log('Invalid credentials');
-      }
-    });
-  }
+
 }
