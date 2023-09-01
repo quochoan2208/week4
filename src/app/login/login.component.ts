@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
   newuser:User = new User();
   email:string = "";
   pwd:string = "";
+  birthdate:string = "";
+  age:string = "";
   loggedin:boolean = false;
   private router = inject(Router);
   private authService = inject(AuthService);
@@ -41,7 +43,7 @@ export class LoginComponent implements OnInit {
       next:
         (data)=>{
           if (data.valid == true){
-            this.newuser = new User(data.username,data.email)
+            this.newuser = new User(data.username,data.email,data.pwd,data.valid,data.avatar,data.birthdate,data.age);
             this.authService.setCurrentuser(this.newuser);
             this.router.navigate(['/home']);
           }else{

@@ -8,14 +8,18 @@ import { AccountComponent } from './account/account.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
 
-const routes: Routes = [{path: 'login',component: LoginComponent},{path: 'account',component: AccountComponent},{path: 'profile',component: ProfileComponent}]
+
+const routes: Routes = [{path: 'login',component: LoginComponent},{path: 'account',component: AccountComponent},{path: 'profile',component: ProfileComponent},{path: 'home',component: HomeComponent}]
 
 @NgModule({
   declarations: [
     AppComponent,
   
     AccountComponent,
+        
     
 
     
@@ -25,7 +29,8 @@ const routes: Routes = [{path: 'login',component: LoginComponent},{path: 'accoun
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

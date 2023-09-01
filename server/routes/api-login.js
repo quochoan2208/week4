@@ -21,16 +21,21 @@ module.exports = function (app,path,fs) {
             customer.valid = false;
             customer.email = '';
             customer.username = '';
+            customer.birthdate= '';
+            customer.age = '';
     
             for (let i = 0; i < users.length; i++) {
                 if (req.body.email == users[i].email && req.body.upwd == users[i].pwd) {
                     customer.valid = true;
                     customer.email = users[i].email;
                     customer.username = users[i].username;
+                    customer.birthdate = users[i].birthdate;
+                    customer.age = users[i].age;
     
                 }
             }
             res.send(customer);
+            console.log(customer);
             
             }catch(err){
               console.log("Error pasing the userdata");
